@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-goExecuter='go/src/github.com/danielfoehrkn/bashscripts/util/execute'
+goExecuter='go/src/github.com/danielfoehrkn/bashscripts/util/kubectlSwitch'
 switch(){
     # construct list of arguments to pass to golang binary (where the real work happens)
     configPaths=""
@@ -8,12 +8,13 @@ switch(){
     chmod +x $HOME/${goExecuter}
 
     IFS=$'\n'; set -f
+    # directory where I store my kubeconfigs
     for f in $(find $HOME/.kube-secrets/ -name '*config*'); do
         configPaths+="$f "
     done
 
-
-    for f in $(find /Users/d060239/go/src/github.com/gardener/gardener/dev -name 'config'); do
+    # additonal directory for gardener
+    for f in $(find $HOME/go/src/github.com/gardener/gardener/dev -name 'config'); do
         configPaths+="$f "
     done
 
