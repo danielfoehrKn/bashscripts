@@ -1,0 +1,11 @@
+#!/bin/sh
+# git pre commit hook to sort imports according to the Gardener import style
+
+for f in $(git status -s | awk '{if ($1 == "M") print $2}'); do
+  echo "$f"
+  importsort -exclude zz_generated -w "$f"
+  # add again in case there were changes
+  git add "$f"
+done
+
+echo "Sorted all imports"
