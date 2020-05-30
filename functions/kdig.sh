@@ -1,7 +1,7 @@
 #!/usr/local/bin bash
 
-tmpDIRDig="$HOME/.kube-secrets/.dig"
-tmpDIR="$HOME/.kube-secrets/.tmp"
+tmpDIRDig="$HOME/.kube/switch/.dig"
+tmpDIR="$HOME/.kube/switch/.tmp"
 
 kdig(){
    mkdir -p ${tmpDIR}
@@ -27,7 +27,7 @@ kdig(){
     fi
 
     # copy just created tmp kubeconfigs to general tmp folder to make available with normal mashtmp
-    cp -r ${tmpDIRDig}/* "$HOME/.kube-secrets/.tmp"
+    cp -r ${tmpDIRDig}/* "$HOME/.kube/switch/.tmp"
 
     # only show shoots found in this cluster
     switchdig
