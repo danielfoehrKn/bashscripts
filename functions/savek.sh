@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TMP_CONFIGS_DIR=$HOME/.kube-secrets/.tmp/
+TMP_CONFIGS_DIR=$HOME/.kube/switch/.tmp/
 
 # copy kubeconfig to temp dir under ~/.kube-secrets/.tmp
 savek () {

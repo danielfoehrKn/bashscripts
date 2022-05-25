@@ -1,11 +1,15 @@
-#!/bin/sh
-# git pre commit hook to sort imports according to the Gardener import style
+#!/bin/bash
 
-for f in $(git status -s | awk '{if ($1 == "M") print $2}'); do
-  echo "$f"
-  importsort -exclude zz_generated -w "$f"
-  # add again in case there were changes
-  git add "$f"
-done
+# pre-commit hook located in .git/hooks/pre-commit to run gitGuardian on commits anticipated to land in github.com
 
-echo "Sorted all imports"
+# check if no github.com push remote is configured, so we don’t send internal source code to gitGuardian
+# look if one or more github.com remotes exist and then use the inverse exit code from grep in the if statement
+if ! git remote -v | grep '(push)$' | grep 'github.com'; then
+echo "no github.com remote configured; not scanning with gitGuardian";
+# exit pre-commit hook with exit code 0 to skip gitGuardian scan as no github.com remote exists
+exit 0;
+fi
+
+echo "github.com remote configured; sending to gitGuardian before committing. Please wait."
+# execute git guardian (that's the normal pre-commmit hook from https://github.com/GitGuardian/gg-shield/blob/main/ggshield/install.py#L74)
+ggshield scan pre-commit

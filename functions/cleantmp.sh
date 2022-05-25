@@ -2,6 +2,6 @@
 
 cleantmp(){
 # >/dev/null 2>/dev/null
-    (/bin/rm -rf $HOME/.kube-secrets/.tmp/*)
-    (/bin/rm -rf $HOME/.kube-secrets/.dig/*)
+    (/bin/rm -rf $HOME/.kube/switch/.tmp/*)
+    (/bin/rm -rf $HOME/.kube/switch/.dig/*)
 }
