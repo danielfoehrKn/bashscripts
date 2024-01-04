@@ -10,6 +10,11 @@ echo "no github.com remote configured; not scanning with gitGuardian";
 exit 0;
 fi
 
+if git remote -v | grep 'danielfoehrKn/documents'; then
+  echo "skip pre-commit for documents repository"
+  exit 0
+fi
+
 echo "github.com remote configured; sending to gitGuardian before committing. Please wait."
 # execute git guardian (that's the normal pre-commmit hook from https://github.com/GitGuardian/gg-shield/blob/main/ggshield/install.py#L74)
 ggshield scan pre-commit

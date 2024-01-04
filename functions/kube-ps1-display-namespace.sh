@@ -6,7 +6,7 @@ function get_namespace_kubeps1() {
 }
 export KUBE_PS1_SUFFIX=""
 export KUBE_PS1_PREFIX=""
-export KUBE_PS1_SYMBOL_DEFAULT="🤼"
+#export KUBE_PS1_SYMBOL_DEFAULT="🤼"
 export KUBE_PS1_NS_COLOR=green
-export KUBE_PS1_SYMBOL_ENABLE=true
+#export KUBE_PS1_SYMBOL_ENABLE=true
 export KUBE_PS1_NAMESPACE_FUNCTION=get_namespace_kubeps1
